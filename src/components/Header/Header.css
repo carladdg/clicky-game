@@ -1,0 +1,9 @@
+.jumbotron {
+    background-image: url(/img/header-image.png);
+    background-size: cover;
+    background-position: top 22% right 22%;
+    background-repeat: no-repeat;
+    border-radius: 0px;
+    height: 300px;
+    margin-bottom: 0px;
+}

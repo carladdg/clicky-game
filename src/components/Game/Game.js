@@ -1,6 +1,8 @@
 import React, { Component } from "react"; 
-import ImagesArray from "../ImagesArray";
-import ImageCard from "./ImageCard";
+import Container from "../Container";
+import ImagesArray from "../../ImagesArray";
+import ImageCard from "../ImageCard";
+import Scoreboard from "../Scoreboard";
 
 class Game extends Component {
     state = {
@@ -31,8 +33,8 @@ class Game extends Component {
         this.setState({ images: shuffledImagesArray });
     }
 
-    handleImageClick = event => {
-        const clickedImage = this.state.images.findIndex(image => image.src === event.target.getAttribute("src"));
+    handleImageClick = id => {
+        const clickedImage = this.state.images.findIndex(image => image.id === id);
 
         if (this.state.images[clickedImage].wasClicked) {
             this.setState({ currentScore: 0 })
@@ -59,11 +61,12 @@ class Game extends Component {
 
     render = () => (
         <React.Fragment>
-            <h3>Current Score: {this.state.currentScore}</h3>
-            <h3>Top Score: {this.state.topScore}</h3>
-            {this.state.images.map(image => (
-                <ImageCard key={image.src} src={image.src} onClick={this.handleImageClick} />
-            ))}
+            <Scoreboard currentScore={this.state.currentScore} topScore={this.state.topScore} />
+            <Container>
+                {this.state.images.map(image => (
+                    <ImageCard key={image.id} id={image.id} src={image.src} handleClick={this.handleImageClick} />
+                ))}
+            </Container>
         </React.Fragment>
     )
 }

@@ -1,0 +1,17 @@
+.scoreboard {
+    background: #052090;
+    color: #ffffff;
+    font-family: "Franklin Gothic Book", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    padding: 15px;
+}
+
+.scores {
+    margin-bottom: 0px;
+}
+
+.sticky-true {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
