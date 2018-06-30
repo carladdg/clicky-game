@@ -1,5 +1,6 @@
 import React, { Component } from "react"; 
 import ImagesArray from "../ImagesArray";
+import ImageCard from "./ImageCard";
 
 class Game extends Component {
     state = {
@@ -61,7 +62,7 @@ class Game extends Component {
             <h3>Current Score: {this.state.currentScore}</h3>
             <h3>Top Score: {this.state.topScore}</h3>
             {this.state.images.map(image => (
-                <img key={image.src} src={image.src} alt="Brooklyn Nine-Nine Character" onClick={this.handleImageClick} />
+                <ImageCard key={image.src} src={image.src} onClick={this.handleImageClick} />
             ))}
         </React.Fragment>
     )
