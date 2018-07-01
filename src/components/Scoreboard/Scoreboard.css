@@ -10,6 +10,19 @@
     margin-bottom: 0px;
 }
 
+.result-message {
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+
+.correct { 
+    color: #4EE542;
+}
+
+.incorrect {
+    color: #FE4444;
+}
+
 .sticky-true {
     position: fixed;
     top: 0;

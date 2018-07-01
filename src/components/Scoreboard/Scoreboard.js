@@ -10,7 +10,7 @@ class Scoreboard extends Component {
     componentDidMount = () => {
         window.addEventListener('scroll', this.handleScroll);
     }
-
+    
     componentWillUnmount = () => {
         window.removeEventListener('scroll', this.handleScroll);
     }
@@ -39,6 +39,7 @@ class Scoreboard extends Component {
             >
                 <h4>Click on an image to earn points, but don't click on any more than once!</h4>
                 <h4 className="scores">Current Score: {this.props.currentScore} | Top Score: {this.props.topScore}</h4>
+                {this.props.resultMessage && <h4 className={`result-message ${this.props.guessResult}`}>{this.props.resultMessage}</h4>}
             </div>
             {this.state.sticky && <div style={{height: this.state.stickySpacerHeight}}></div>}
         </React.Fragment>

@@ -8,7 +8,9 @@ class Game extends Component {
     state = {
         currentScore: 0,
         topScore: 0,
-        images: []
+        images: [],
+        guessResult: "",
+        resultMessage: ""
     }
 
     componentDidMount = () => {
@@ -37,7 +39,11 @@ class Game extends Component {
         const clickedImage = this.state.images.findIndex(image => image.id === id);
 
         if (this.state.images[clickedImage].wasClicked) {
-            this.setState({ currentScore: 0 })
+            this.setState({ 
+                currentScore: 0,
+                guessResult: "incorrect",
+                resultMessage: "Sorry, that was wrong!" 
+            })
             this.shuffleImages(ImagesArray);
         } else {
             const updatedImages = this.state.images.slice();
@@ -45,7 +51,9 @@ class Game extends Component {
             this.setState(previousState => ({ 
                 currentScore: previousState.currentScore + 1,
                 topScore: this.getTopScore(previousState),
-                images: updatedImages 
+                images: updatedImages,
+                guessResult: "correct",
+                resultMessage: "You got it!"
             }))
             this.shuffleImages(this.state.images);
         }
@@ -61,7 +69,7 @@ class Game extends Component {
 
     render = () => (
         <React.Fragment>
-            <Scoreboard currentScore={this.state.currentScore} topScore={this.state.topScore} />
+            <Scoreboard currentScore={this.state.currentScore} topScore={this.state.topScore} guessResult={this.state.guessResult} resultMessage={this.state.resultMessage} />
             <Container>
                 {this.state.images.map(image => (
                     <ImageCard key={image.id} id={image.id} src={image.src} handleClick={this.handleImageClick} />
